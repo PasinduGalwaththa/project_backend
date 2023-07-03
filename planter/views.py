@@ -20,3 +20,15 @@ def planter_view(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# class planter_view(APIView):
+#     def get(self , request):
+#         output = [{'first_name', 'last_name', 'address' , 'telephone', 'nic'}
+#                   for output in planter.objects.raw('SELECT * FROM planter_planter')]
+#         return Response(output)
+        
+#     def post(self , request):
+#         serializer = planterSerializer(data=request.data)
+#         if serializer.is_valid(raise_exception=True):
+#             serializer.save()
+#             return Response(serializer.data)   
