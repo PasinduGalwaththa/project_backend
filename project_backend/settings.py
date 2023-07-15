@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'updates' ,
     'rest_framework',
     'planter',
+    'set_arrivals',
+    
     
     'corsheaders'
 ]
