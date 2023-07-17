@@ -10,7 +10,7 @@ from rest_framework.generics import DestroyAPIView
 # Create your views here.
 
 
-@api_view(['GET', 'POST', 'DELETE'])
+@api_view(['GET', 'POST', 'DELETE', 'PUT'])
 def SetArrivals_view(request,pk=None):
     if request.method == 'GET':
         queryset = SetArrivals.objects.all()
@@ -29,7 +29,22 @@ def SetArrivals_view(request,pk=None):
         SetArrivals.objects.get(id=pk).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
+    # elif request.method == 'PUT':
+    #     print(request)
+    #     SetArrivals.objects.get(id=pk).put()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
     
+    elif request.method == 'PUT':
+        try:
+            instance = SetArrivals.objects.get(id=pk)
+        except SetArrivals.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = SetArrivalsSerializers(instance, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
 # class SetArrivalsDeleteView(DestroyAPIView):

@@ -8,4 +8,5 @@ urlpatterns = [
     path('<str:day>/', DetailByDayView.as_view(), name='detail-by-day'),
     
     path('delete/<int:pk>/', views.SetArrivals_view, name='delete-contact'),
+    path('update/<int:pk>/', views.SetArrivals_view, name='update-contact'),
     ]
