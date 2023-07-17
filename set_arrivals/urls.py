@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-from set_arrivals.views import DetailByDayView 
+from set_arrivals.views import DetailByDayView
 
 
 urlpatterns = [
