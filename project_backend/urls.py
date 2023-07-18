@@ -12,5 +12,6 @@ urlpatterns = [
     path('updates/' , include('updates.urls')),
     path('planter/' , include('planter.urls')),
     path('setarrivals/',include('set_arrivals.urls')),
+    path('collector/',include('collector.urls')),
    
 ]
