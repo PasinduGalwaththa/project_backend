@@ -1,4 +1,5 @@
 from django.db import models
+from estate.models import estate
 
 # Create your models here.
 class planter(models.Model):
@@ -8,7 +9,7 @@ class planter(models.Model):
     
     address = models.CharField(max_length =50 , null=False)
     telephone = models.IntegerField(null=False)
-    estate_number = models.CharField(max_length=4 , null=False)
+    estate = models.ForeignKey(estate,default=1,  on_delete=models.CASCADE)
     nic = models.CharField(max_length=15 , null=False)
     
     # def __str__(self):

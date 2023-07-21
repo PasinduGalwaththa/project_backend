@@ -13,7 +13,7 @@ class SetArrivals(models.Model):
     )
     id=models.AutoField(primary_key=True)
     collectionpointname=models.CharField(max_length=30)
-    collectionpoint=models.CharField(max_length=30)
+    # collectionpoint=models.CharField(max_length=30)
     arrivaltime=models.CharField(max_length=30)
     day=models.CharField(max_length=30,choices=DAY)
     

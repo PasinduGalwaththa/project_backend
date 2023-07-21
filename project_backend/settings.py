@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'planter',
     'set_arrivals',
     'collector',
+    'estate',
     
     
     'corsheaders'

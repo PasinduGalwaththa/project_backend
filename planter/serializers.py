@@ -4,7 +4,7 @@ from .models import planter
 class planterSerializerBasic(ModelSerializer):
     class Meta:
         model = planter
-        fields = ['first_name','last_name','estate_number','id']
+        fields = '__all__'
 
 class planterSerializer(ModelSerializer):
     class Meta:
