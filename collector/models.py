@@ -8,5 +8,5 @@ class collector(models.Model):
     adress = models.CharField(max_length=20 , null=False)
     telephone = models.CharField(max_length=10 , null=False)
      
-    def __str__(self):
-        return self.first_name
+    # def __str__(self):
+    #     return self.first_name

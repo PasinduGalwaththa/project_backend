@@ -21,11 +21,5 @@ def updates_view(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-# @api_view(['GET']) 
-# def updates_detail_view(request):
-#     if request.method == 'GET':
-#         queryset = planter.objects.all()
-#         serializer = PlanterSerializer(queryset, many=True)
-#         return Response(serializer.data)
-    
+
         

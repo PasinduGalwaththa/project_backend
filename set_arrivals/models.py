@@ -17,6 +17,7 @@ class SetArrivals(models.Model):
     arrivaltime=models.CharField(max_length=30)
     day=models.CharField(max_length=30,choices=DAY)
     
+    
     def __str__(self):
         return self.collectionpointname
           

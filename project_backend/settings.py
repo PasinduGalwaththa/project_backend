@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'collector',
     'estate',
     'payements',
+    'vehicles',
     
     
     'corsheaders'
