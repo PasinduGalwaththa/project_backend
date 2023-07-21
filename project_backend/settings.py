@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'set_arrivals',
     'collector',
     'estate',
+    'payements',
     
     
     'corsheaders'

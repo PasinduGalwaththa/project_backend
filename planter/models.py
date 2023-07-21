@@ -13,4 +13,4 @@ class planter(models.Model):
     nic = models.CharField(max_length=15 , null=False)
     
     # def __str__(self):
-    #     return self.planter_name
+    #     return self.first_name
