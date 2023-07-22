@@ -1,4 +1,5 @@
 from django.db import models
+#from collector.models import collector
 
 
 from estate.models import estate

@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from planter.models import planter
-from planter.serializers import planterSerializer
+
 from .models import collector
 
 
