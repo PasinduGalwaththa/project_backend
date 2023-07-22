@@ -8,5 +8,5 @@ class payments(models.Model):
    amount = models.FloatField(null=False)
    estate = models.ForeignKey(estate, on_delete=models.CASCADE)
     
-# def __str__(self):
-#         return self.planter_id
+   def __str__(self):
+      return self.priceperkg

@@ -10,5 +10,5 @@ class vehicles(models.Model):
     collector = models.OneToOneField(collector, on_delete=models.CASCADE)
    
     
-    # def __str__(self):
-    #     return self.vehicle_id
+    def __str__(self):
+        return self.vehiclenumber

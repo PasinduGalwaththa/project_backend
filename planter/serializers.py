@@ -2,12 +2,15 @@ from rest_framework.serializers import ModelSerializer
 from estate.models import estate
 from .models import planter
 
+
 from estate.serializers import estateSerializer
+
 
 
 
 class planterSerializerBasic(ModelSerializer):
     estate = estateSerializer()
+    # collector=collectorSerializer()
     class Meta:
         model = planter
         fields = '__all__'
@@ -20,4 +23,9 @@ class estateSerializer(ModelSerializer):
 class planterSerializer(ModelSerializer):
     class Meta:
         model = planter
-        fields = '__all__'        
+        fields = '__all__'
+        
+# class collectorSerializer(ModelSerializer):
+#     class Meta:
+#         model = collector
+#         fields = '__all__'                
