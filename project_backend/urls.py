@@ -13,5 +13,6 @@ urlpatterns = [
     path('planter/' , include('planter.urls')),
     path('setarrivals/',include('set_arrivals.urls')),
     path('collector/',include('collector.urls')),
+    path('estate/',include('estate.urls')),
    
 ]

@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import planter
-from .serializers import planterSerializer , planterSerializerBasic
+from .serializers import planterSerializer, planterSerializerBasic
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
+from estate.models import estate
+from estate.serializers import estateSerializer
 
-# Create your views here.
+# ... Your other code ...
 
 @api_view(['GET', 'POST'])
 def planter_view(request):
@@ -24,8 +26,9 @@ def planter_view(request):
 
 class EstateNumberView(APIView):
     def get(self, request, estate_number, format=None):
-        details = planter.objects.get(estate_number=estate_number)
-        serializer = planterSerializerBasic(details)
+        estate_obj = get_object_or_404(estate, id=estate_number)
+        planters = planter.objects.filter(estate=estate_obj)
+        serializer = planterSerializerBasic(planters, many=True)
         return Response(serializer.data)
-    
-    
+
+# ... Your other code ...

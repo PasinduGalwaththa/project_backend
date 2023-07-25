@@ -1,7 +1,7 @@
 from . import views
 from django.urls import path
-from l.views import estateView
+from .views import estateView
 
 urlpatterns = [
-    path('', views.estate_view, name='getestate'),
+    path('', estateView.as_view(), name='getestate'),
 ]
