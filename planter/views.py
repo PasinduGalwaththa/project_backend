@@ -25,8 +25,8 @@ def planter_view(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class EstateNumberView(APIView):
-    def get(self, request, estate_number, format=None):
-        estate_obj = get_object_or_404(estate, id=estate_number)
+    def get(self, request, estate_id, format=None):
+        estate_obj = get_object_or_404(estate, id=estate_id)
         planters = planter.objects.filter(estate=estate_obj)
         serializer = planterSerializerBasic(planters, many=True)
         return Response(serializer.data)
