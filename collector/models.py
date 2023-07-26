@@ -1,13 +1,14 @@
 from django.db import models
-from planter.models import planter
+from user.models import Customuser
 
 # Create your models here.
 class collector(models.Model):
     first_name = models.CharField(max_length=20 ,null=False)
     last_name = models.CharField(max_length=20 ,null=False)
-    nic = models.CharField(max_length=4 , null=False)
-    adress = models.CharField(max_length=20 , null=False)
+    nic = models.CharField(max_length=12 , null=False)
+    address = models.CharField(max_length=20 , null=False)
     telephone = models.CharField(max_length=10 , null=False)
+    user = models.OneToOneField(Customuser, on_delete=models.CASCADE)
    
      
     def __str__(self):
