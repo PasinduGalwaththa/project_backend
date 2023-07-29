@@ -14,11 +14,11 @@ from estate.serializers import estateSerializer
 def planter_view(request):
     if request.method == 'GET':
         queryset = planter.objects.all()
-        serializer = planterSerializerBasic(queryset, many=True)
+        serializer = AddPlanterSerializer(queryset, many=True)
         return Response(serializer.data)
     
     elif request.method == 'POST':
-        serializer = planterSerializerBasic(data=request.data)
+        serializer = AddPlanterSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -32,17 +32,3 @@ class EstateNumberView(APIView):
         return Response(serializer.data)
 
 # ... Your other code ...
-class PlanterView(APIView):
-    
-    def get(self, request):
-        queryset = planter.objects.all()
-        serializer = AddPlanterSerializer(queryset, many=True)
-        return Response(serializer.data)
-    
-    def post(self, request):
-        serializer = AddPlanterSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

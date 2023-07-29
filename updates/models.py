@@ -2,7 +2,7 @@ from django.db import models
 from collector.models import collector
 
 from planter.models import planter
-
+from estate.models import estate
 
 
 

@@ -3,7 +3,6 @@ from .models import estate
 
 
 class estateSerializer(ModelSerializer):
-    #collector=collectorSerializer()
     class Meta:
         model = estate
         fields = '__all__'

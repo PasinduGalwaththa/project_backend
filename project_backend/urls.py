@@ -17,6 +17,8 @@ urlpatterns = [
     path('setarrivals/',include('set_arrivals.urls')),
     path('collector/',include('collector.urls')),
     path('estate/',include('estate.urls')),
-    path('user/' , include('user.urls'))
+    path('user/' , include('user.urls')),
+    path('route/', include('route.urls')),
+    
    
 ]

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from planter.models import planter
 from user.serializers import RegisterSerializer
+from .models import collector
 
 from .models import collector
 
@@ -28,4 +29,6 @@ class AddCustomerSerialier(serializers.ModelSerializer):
         user = user_serializer.save()
         collector_prof = collector.objects.create(user=user, **validated_data)
         return collector_prof
-        
+    
+   
+       

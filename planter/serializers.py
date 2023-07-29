@@ -26,10 +26,13 @@ class AddPlanterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(source='user.password' , write_only=True)
     email = serializers.CharField(source='user.email')
     usertype = serializers.CharField(source='user.usertype')
+    estatename = serializers.CharField(source='estate.estatename')
+    teatype= serializers.CharField(source='estate.teatype')
+    
     
     class Meta:
         model = planter
-        fields = ('first_name','last_name','nic','address','telephone','username','password' , 'email' , 'usertype' , 'estate' ,)
+        fields = ('first_name','last_name','nic','address','telephone','username','password' , 'email' , 'usertype' , 'estatename' , 'teatype' )
         extra_kwargs = {'password': {'write_only': True}}
         
     def create(self, validated_data):
@@ -37,5 +40,9 @@ class AddPlanterSerializer(serializers.ModelSerializer):
         user_serializer = RegisterSerializer(data=user_data)
         user_serializer.is_valid(raise_exception=True)
         user = user_serializer.save()
-        planter_prof = planter.objects.create(user=user, **validated_data)
+        estate_data = validated_data.pop('estate')
+        estate_serializer = estateSerializer(data=estate_data)
+        estate_serializer.is_valid(raise_exception=True)
+        estate = estate_serializer.save()
+        planter_prof = planter.objects.create(user=user, estate = estate , **validated_data)
         return planter_prof

@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'payements',
     'vehicles',
     'user',
-    
+    'route',
     
     'corsheaders',
     'rest_framework_simplejwt',

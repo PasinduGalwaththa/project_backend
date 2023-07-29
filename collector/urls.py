@@ -3,5 +3,7 @@ from django.urls import path
 
 urlpatterns = [
     path('', collector_view, name='getcollector'),
-    path('add/', CollectorView.as_view(), name='addcollector')
+    path('collector/', CollectorView.as_view(), name='addcollector')
+    
+    
 ]
