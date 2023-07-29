@@ -19,6 +19,8 @@ urlpatterns = [
     path('estate/',include('estate.urls')),
     path('user/' , include('user.urls')),
     path('route/', include('route.urls')),
+    path('payments/', include('payements.urls')),
+    path('teatype/', include('teatype.urls')),
     
    
 ]

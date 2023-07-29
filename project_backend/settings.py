@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'vehicles',
     'user',
     'route',
+    'teatype',
     
     'corsheaders',
     'rest_framework_simplejwt',

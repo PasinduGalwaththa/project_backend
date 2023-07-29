@@ -1,7 +1,8 @@
 from .import views
 from django.urls import path
-from .views import paymentsrView
+from .views import paymentsView
 
 urlpatterns = [
-    path('<int:estatenumber>/', views.payments_view, name='getpayments'),
+    path('', paymentsView.as_view(), name='getpayments'),
+    path('<int:pk>/', paymentsView.as_view(), name='updatepayments'),
 ]

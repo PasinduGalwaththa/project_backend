@@ -35,3 +35,8 @@
 2. Collector Registration http://127.0.0.1:8000/collector/add/
 3. Planter Registration http://127.0.0.1:8000/planter/add/
 
+
+http://127.0.0.1:8000/teatype/
+http://127.0.0.1:8000/payments/
+http://127.0.0.1:8000/payments/4
+http://127.0.0.1:8000/updates/getbyid/1/
