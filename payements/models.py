@@ -2,27 +2,46 @@ from typing import Iterable, Optional
 from django.db import models
 from updates.models import updates
 from teatype.models import Teatype
+from datetime import timedelta
+from planter.models import planter
 
 # Create your models here.
 
 class payments(models.Model):
-   update = models.ForeignKey(updates, on_delete=models.CASCADE)
-   calculated_amount = models.FloatField(null=True)
-   payment_amount = models.FloatField(null=True)
+   calculated_amount = models.FloatField(null=True , blank=True)
+   payment_amount = models.FloatField(null=True , blank=True)
    date = models.DateField(null=True)
-   teatype = models.ForeignKey(Teatype, on_delete=models.PROTECT)
+   gross_weight = models.FloatField(null=True , blank=True)
+   planter = models.ForeignKey(planter, on_delete=models.PROTECT)
+   got_paid = models.BooleanField(default=False)
+   transferred = models.BooleanField(default=False)
    
    def __str__(self):
-      return self.update.planter.first_name
+      return self.calculated_amount.__str__()
    
    def save(self, *args, **kwargs):
-      weight = self.update.weight
-      price = self.teatype.teaprice
+      thirty_days_ago = self.date - timedelta(days=30)
       
-      self.calculated_amount = weight * price
+      print(self.planter.estate.teatype.teatype)
       
+
+      relevant_updates = updates.objects.filter(
+            planter=self.planter,
+            collected_date__gte=thirty_days_ago,
+            collected_date__lte=self.date
+        )
       
-      super(payments , self).save(*args, **kwargs)
+      for update in relevant_updates:
+         update.got_paid = True
+         update.save()
+      
+
+      calculated_weight = sum(update.weight for update in relevant_updates)
+      self.gross_weight = calculated_weight
+      self.calculated_amount = calculated_weight * self.planter.estate.teatype.teaprice
+
+      super(payments, self).save(*args, **kwargs)
+      
 
    
    

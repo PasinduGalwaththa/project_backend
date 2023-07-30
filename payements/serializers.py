@@ -1,14 +1,35 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from .models import payments
 
-class paymentsSerializer(ModelSerializer):
+class paymentsSerializer(serializers.ModelSerializer):
+    
+    
     class Meta:
         model = payments
-        fields = ['update', 'date', 'teatype' , 'calculated_amount' , 'id']
+        fields = [ 'date', 'calculated_amount' , 'id', 'gross_weight' , 'planter']
         
-class paymentsAddSerializer(ModelSerializer):
+    
+        
+class paymentsAddSerializer(serializers.ModelSerializer):
     class Meta:
         model = payments
         fields = '__all__'
         
+        
+class PaymentsViewSerializer(serializers.ModelSerializer):
+    
+    planter = serializers.CharField(source='planter.first_name')
+    class Meta:
+        model = payments
+        fields = '__all__'
+        
+class PaymentsGotPaidSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = payments
+        fields = ['got_paid']
+
+class PaymentsTransferredSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = payments
+        fields = ['transferred']
         

@@ -34,3 +34,5 @@ class GetupdatesbyPlantIDdSerializer(serializers.ModelSerializer):
     class Meta:
         model = updates
         fields = ['id','planter','collector','collected_date' , 'weight' , 'estate']     
+        
+        

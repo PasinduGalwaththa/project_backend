@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import payments
-from .serializers import paymentsSerializer , paymentsAddSerializer
+from .serializers import paymentsSerializer , paymentsAddSerializer , PaymentsViewSerializer
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -21,6 +21,7 @@ class paymentsView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def patch(self, request, pk, format=None):
+        
         try:
             payment = payments.objects.get(pk=pk)
         except payments.DoesNotExist:
@@ -31,3 +32,11 @@ class paymentsView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class GetListByPlanterId(APIView):
+    def get(self, request, planter_id, format=None):
+        queryset = payments.objects.filter(planter_id=planter_id)
+        serializer = PaymentsViewSerializer(queryset, many=True)
+        return Response(serializer.data)
+    

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from collector.models import collector
-from .serializers import collectorSerializer , AddCustomerSerialier
+from .serializers import collectorSerializer , AddCustomerSerialier , GetCollectorByIDSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -35,4 +35,10 @@ class CollectorView(APIView):
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+class GetCollectorByID(APIView):
+    def get(self, request, id, format=None):
+        queryset = collector.objects.get(user_id=id)
+        serializer = GetCollectorByIDSerializer(queryset)
+        return Response(serializer.data)
 

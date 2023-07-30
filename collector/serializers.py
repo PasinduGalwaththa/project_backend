@@ -30,5 +30,12 @@ class AddCustomerSerialier(serializers.ModelSerializer):
         collector_prof = collector.objects.create(user=user, **validated_data)
         return collector_prof
     
+    
+class GetCollectorByIDSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = collector
+        fields = ['id']
+    
    
        

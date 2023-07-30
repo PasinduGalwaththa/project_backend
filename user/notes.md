@@ -39,4 +39,8 @@
 http://127.0.0.1:8000/teatype/
 http://127.0.0.1:8000/payments/
 http://127.0.0.1:8000/payments/4
-http://127.0.0.1:8000/updates/getbyid/1/
+http://127.0.0.1:8000/updates/getbyidplanter/1/
+http://127.0.0.1:8000/updates/getbyidcollector/1/
+http://127.0.0.1:8000/routes/routesdetails/
+http://127.0.0.1:8000/collector/getbyid/1
+

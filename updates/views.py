@@ -22,11 +22,18 @@ def updates_view(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-class Getupdatesbyd(APIView):
+class GetupdatesbyplanterId(APIView):
     def get(self, request, planter_id, format=None):
         queryset = updates.objects.filter(planter_id=planter_id)
         serializer = GetupdatesbyPlantIDdSerializer(queryset, many=True)
         return Response(serializer.data)
     
+class GetupdatesbyCollectorId(APIView):
+    def get(self, request, collector_id, format=None):
+        queryset = updates.objects.filter(collector_id=collector_id)
+        serializer = GetupdatesbyPlantIDdSerializer(queryset, many=True)
+        return Response(serializer.data)
+    
+
 
         
