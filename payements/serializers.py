@@ -33,3 +33,15 @@ class PaymentsTransferredSerializer(serializers.ModelSerializer):
         model = payments
         fields = ['transferred']
         
+        
+class PaymentsDateAmount(serializers.ModelSerializer):
+    
+    class Meta:
+        model = payments
+        fields = ['date' , 'calculated_amount']
+        
+class PaymentsDateWeight(serializers.ModelSerializer):
+    
+    class Meta:
+        model = payments
+        fields = ['date' , 'gross_weight']

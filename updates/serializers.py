@@ -36,3 +36,9 @@ class GetupdatesbyPlantIDdSerializer(serializers.ModelSerializer):
         fields = ['id','planter','collector','collected_date' , 'weight' , 'estate']     
         
         
+class UpdatesWeightWeightSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = updates
+        fields = ['weight' , 'collected_date']
+        
+        

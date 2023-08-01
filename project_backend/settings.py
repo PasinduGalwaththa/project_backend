@@ -203,3 +203,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = 'user.Customuser'
+
+JAZZMIN_SETTINGS = {
+     "site_title": "Haritha Agros",
+     "site_header": "Haritha Agros",
+     "site_brand": "Haritha Agros",
+}

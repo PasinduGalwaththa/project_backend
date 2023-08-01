@@ -6,3 +6,10 @@ class TeatypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teatype
         fields = ['id', 'teatype']
+        
+        
+class TeaIdOnlyserializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Teatype
+        fields = ['teatype']

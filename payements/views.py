@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import payments
-from .serializers import paymentsSerializer , paymentsAddSerializer , PaymentsViewSerializer
+from .serializers import paymentsSerializer , paymentsAddSerializer , PaymentsViewSerializer , PaymentsDateWeight , PaymentsDateAmount
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.db.models import Max
 
 # Create your views here.
 
@@ -38,5 +39,25 @@ class GetListByPlanterId(APIView):
     def get(self, request, planter_id, format=None):
         queryset = payments.objects.filter(planter_id=planter_id)
         serializer = PaymentsViewSerializer(queryset, many=True)
+        return Response(serializer.data)
+    
+class PaymentsGetAmount(APIView):
+    def get(self, request, format=None):
+        latest_records_pks = payments.objects.values('gross_weight').annotate(latest_pk=Max('pk')).values_list('latest_pk', flat=True)
+
+        # Get the actual records using the primary keys
+        queryset = payments.objects.filter(pk__in=latest_records_pks)
+
+        serializer = PaymentsDateAmount(queryset, many=True)
+        return Response(serializer.data)
+    
+class PaymentsGetWeigth(APIView):
+    def get(self, request, format=None):
+        latest_records_pks = payments.objects.values('gross_weight').annotate(latest_pk=Max('pk')).values_list('latest_pk', flat=True)
+
+        # Get the actual records using the primary keys
+        queryset = payments.objects.filter(pk__in=latest_records_pks)
+
+        serializer = PaymentsDateWeight(queryset, many=True)
         return Response(serializer.data)
     

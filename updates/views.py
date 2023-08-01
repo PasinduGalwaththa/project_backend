@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import updates
-from .serializers import UpdatesSerializer , GetupdatesbyPlantIDdSerializer
+from .serializers import UpdatesSerializer , GetupdatesbyPlantIDdSerializer  , UpdatesWeightWeightSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.decorators import APIView
@@ -34,6 +34,11 @@ class GetupdatesbyCollectorId(APIView):
         serializer = GetupdatesbyPlantIDdSerializer(queryset, many=True)
         return Response(serializer.data)
     
+class GetUpdatesWeightDate(APIView):
+    def get (self, request, format=None):
+        queryset = updates.objects.all().order_by('collected_date')[:10]
+        serializer = UpdatesWeightWeightSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
         
